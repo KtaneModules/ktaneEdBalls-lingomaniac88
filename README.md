@@ -1,11 +1,13 @@
-# (Module Name) v1.0
-*Put flavortext here.*
+# Ed Balls v1.0
+*In the words of Ed Balls, "Ed Balls."*
 
-Module ID: moduleId
+Module IDs: edBalls / cruelEdBalls
 
 Created by: lingomaniac88
 
-Manual available here: (link)
+Manuals available here:
+* https://ktane.timwi.de/HTML/Ed%20Balls.html
+* https://ktane.timwi.de/HTML/Cruel%20Ed%20Balls.html
 
 ## Version History
 

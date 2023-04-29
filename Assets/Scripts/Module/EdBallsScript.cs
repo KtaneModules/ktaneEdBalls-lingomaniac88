@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class EdBallsScript : MonoBehaviour
@@ -118,5 +119,34 @@ public class EdBallsScript : MonoBehaviour
 			Module.HandleStrike();
 			CharactersEnteredSoFar = 0;
 		}
+	}
+
+	#pragma warning disable 414
+	string TwitchHelpMessage = "Submit your answer with \"!{0} press EDBALLS\" or \"!{0} submit 1 2 3 4 5 5 6\". Buttons can be identified by position or by letter. Submissions must be seven buttons long.";
+	#pragma warning restore 414
+
+	public KMSelectable[] ProcessTwitchCommand(string command)
+	{
+		var match = Regex.Match(command.Trim().ToUpperInvariant(), "^(SUBMIT +|PRESS +|)([A-Z1-6] *[A-Z1-6] *[A-Z1-6] *[A-Z1-6] *[A-Z1-6] *[A-Z1-6] *[A-Z1-6])$");
+		if (!match.Success)
+		{
+			return null;
+		}
+
+		var buttonMap = new Dictionary<char, KMSelectable>();
+		for (int i = 0; i < Buttons.Length; i++)
+		{
+			var buttonSelectable = GetComponent<KMSelectable>().Children[i];
+			buttonMap[(char) ('1' + i)] = buttonSelectable;
+			buttonMap[Buttons[i].Label.text[0]] = buttonSelectable;
+		}
+
+		string labelsToPress = match.Groups[2].Value.Replace(" ", "");
+		var invalidValues = labelsToPress.Where(c => !buttonMap.ContainsKey(c));
+		if (invalidValues.Any())
+		{
+			throw new System.FormatException("Invalid button(s): " + invalidValues.Join(", "));
+		}
+		return labelsToPress.Select(c => buttonMap[c]).ToArray();
 	}
 }

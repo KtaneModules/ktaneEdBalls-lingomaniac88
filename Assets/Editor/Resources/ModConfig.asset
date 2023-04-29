@@ -14,7 +14,9 @@ MonoBehaviour:
   id: edBalls
   title: Ed Balls and Cruel Ed Balls
   author: lingomaniac88
-  description: Ed Balls
+  description: "Ed Balls v1.0\nIn the words of Ed Balls, \"Ed Balls.\"\n\nModule ID:
+    edBalls / cruelEdBalls\r\n\r\nCreated by: lingomaniac88\r\n\r\nManuals available
+    here:\nhttps://ktane.timwi.de/HTML/Ed%20Balls.html\r\nhttps://ktane.timwi.de/HTML/Cruel%20Ed%20Balls.html\r"
   version: 1.0
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: aa92f5f0abdc2044093dd0bf965b941d, type: 3}

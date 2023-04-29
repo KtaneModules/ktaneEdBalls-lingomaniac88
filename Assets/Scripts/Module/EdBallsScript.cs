@@ -61,49 +61,6 @@ public class EdBallsScript : MonoBehaviour
 		{
 			ModuleLog(puzzleInfo.Key.EncodingDescription(letter));
 		}
-		
-		/*if (puzzleInfo.Key.CaesarShifts == 0 && puzzleInfo.Key.SemaphoreRotations == 0)
-		{
-			ModuleLog("Encoding transformation: shift 0 forward, rotate 0° clockwise. Lucky you!");
-		}
-		else if (puzzleInfo.Key.CaesarShifts == 0)
-		{
-			ModuleLog("Encoding transformation: rotate {0}° clockwise, shift 0 forward", 45 * puzzleInfo.Key.SemaphoreRotations);
-			foreach (var letter in puzzleInfo.Value)
-			{
-				var originalLetter = letter.RotateCounterClockwise(puzzleInfo.Key.SemaphoreRotations);
-				ModuleLog("{0} [{1}] ⇒ [{2}] {3}", originalLetter.ToLetter(), originalLetter.ToArrows(), letter.ToArrows(), letter.ToLetter());
-			}
-		}
-		else if (puzzleInfo.Key.SemaphoreRotations == 0)
-		{
-			ModuleLog("Encoding transformation: shift {0} forward, rotate 0° clockwise", puzzleInfo.Key.CaesarShifts);
-			foreach (var letter in puzzleInfo.Value)
-			{
-				var originalLetter = letter.ShiftBackward(puzzleInfo.Key.CaesarShifts);
-				ModuleLog("{0} ⇒ {1}", originalLetter.ToLetter(), letter.ToLetter());
-			}
-		}
-		else if (puzzleInfo.Key.ShiftFirst)
-		{
-			ModuleLog("Encoding transformation: shift {0} forward, rotate {1}° clockwise", puzzleInfo.Key.CaesarShifts, 45 * puzzleInfo.Key.SemaphoreRotations);
-			foreach (var letter in puzzleInfo.Value)
-			{
-				var intermediateLetter = letter.RotateCounterClockwise(puzzleInfo.Key.SemaphoreRotations);
-				var originalLetter = intermediateLetter.ShiftBackward(puzzleInfo.Key.CaesarShifts);
-				ModuleLog("{0} ⇒ {1} [{2}] ⇒ [{3}] {4}", originalLetter.ToLetter(), intermediateLetter.ToLetter(), intermediateLetter.ToArrows(), letter.ToArrows(), letter.ToLetter());
-			}
-		}
-		else
-		{
-			ModuleLog("Encoding transformation: rotate {0}° clockwise, shift {1} forward", 45 * puzzleInfo.Key.SemaphoreRotations, puzzleInfo.Key.CaesarShifts);
-			foreach (var letter in puzzleInfo.Value)
-			{
-				var intermediateLetter = letter.ShiftBackward(puzzleInfo.Key.CaesarShifts);
-				var originalLetter = intermediateLetter.RotateCounterClockwise(puzzleInfo.Key.SemaphoreRotations);
-				ModuleLog("{0} [{1}] ⇒ [{2}] {3} ⇒ {4}", originalLetter.ToLetter(), originalLetter.ToArrows(), intermediateLetter.ToArrows(), intermediateLetter.ToLetter(), letter.ToLetter());
-			}
-		}*/
 
 		var answer = puzzleInfo.Value.Select(l => l.ToLetter()).Join("");
 		answer = answer.Insert(5, "" + answer[4]).Insert(2, " ");

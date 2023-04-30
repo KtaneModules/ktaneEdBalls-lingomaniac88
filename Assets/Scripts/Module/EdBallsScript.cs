@@ -14,6 +14,7 @@ public class EdBallsScript : MonoBehaviour
 	public KMBombModule Module;
 
 	static int ModuleIdCounter = 1;
+	static int CruelModuleIdCounter = 1;
 	int ModuleId;
 
 	public KtaneEdBalls.Button[] Buttons;
@@ -28,7 +29,14 @@ public class EdBallsScript : MonoBehaviour
 
 	void Awake()
 	{
-		ModuleId = ModuleIdCounter++;
+		if (IsCruel)
+		{
+			ModuleId = CruelModuleIdCounter++;
+		}
+		else
+		{
+			ModuleId = ModuleIdCounter++;
+		}
 	}
 
 	// Use this for initialization
@@ -86,7 +94,7 @@ public class EdBallsScript : MonoBehaviour
 	
 	void ModuleLog(string format, params object[] args)
 	{
-		var prefix = string.Format("[Ed Balls #{0}] ", ModuleId);
+		var prefix = string.Format("[{0}Ed Balls #{1}] ", IsCruel ? "Cruel " : "", ModuleId);
 		Debug.LogFormat(prefix + format, args);
 	}
 
